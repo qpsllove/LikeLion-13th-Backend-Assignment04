@@ -51,24 +51,28 @@ public class ProductService {
                                 ErrorCode.PRODUCT_NOT_FOUND_EXCEPTION.getMessage() + productId)
                 );
         return ProductInfoResponseDto.from(product);
-        }
-
-        // 제품 정보 수정
-        @Transactional
-        public void productUpdate(Long productId,
-                ProductUpdateRequestDto productUpdateRequestDto) {
-            Product product = productRepository.findById(productId)
-                    .orElseThrow(IllegalArgumentException::new);
-
-            product.update(productUpdateRequestDto);
-        }
-
-        // 제품 정보 삭제
-        @Transactional
-        public void productDelete(Long productId) {
-            Product product = productRepository.findById(productId)
-                    .orElseThrow(IllegalArgumentException::new);
-
-            productRepository.delete(product);
-        }
     }
+
+    // 제품 정보 수정
+    @Transactional
+    public void productUpdate(Long productId,
+                              ProductUpdateRequestDto productUpdateRequestDto)
+            {Product product = productRepository.findById(productId)
+                    .orElseThrow(
+                            () -> new BusinessException(ErrorCode.PRODUCT_NOT_FOUND_EXCEPTION,
+                                ErrorCode.PRODUCT_NOT_FOUND_EXCEPTION.getMessage() + productId)
+                    );
+            product.update(productUpdateRequestDto);
+    }
+
+    // 제품 정보 삭제
+    @Transactional
+    public void productDelete(Long productId) {
+        Product product = productRepository.findById(productId)
+                    .orElseThrow(
+                            () -> new BusinessException(ErrorCode.PRODUCT_NOT_FOUND_EXCEPTION,
+                                ErrorCode.PRODUCT_NOT_FOUND_EXCEPTION.getMessage() + productId)
+                    );
+        productRepository.delete(product);
+    }
+}

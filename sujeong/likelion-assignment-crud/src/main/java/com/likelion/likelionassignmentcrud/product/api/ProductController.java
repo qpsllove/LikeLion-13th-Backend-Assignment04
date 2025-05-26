@@ -48,18 +48,18 @@ public class ProductController {
 
     // 회원 id를 통한 제품 수정
     @PatchMapping("/{productId}")
-    public ResponseEntity<String> productUpdate(
+    public ApiResTemplate<String> productUpdate(
             @PathVariable("productId") Long productId,
             @RequestBody ProductUpdateRequestDto productUpdateRequestDto) {
         productService.productUpdate(productId, productUpdateRequestDto);
-        return new ResponseEntity<>("제품 수정", HttpStatus.OK);
+        return ApiResTemplate.successWithNoContent(SuccessCode.PRODUCT_UPDATE_SUCCESS);
     }
 
     // 회원 id를 통한 제품 삭제
     @DeleteMapping("/{productId}")
-    public ResponseEntity<String> productDelete(
+    public ApiResTemplate<String> productDelete(
             @PathVariable("productId") Long productId) {
         productService.productDelete(productId);
-        return new ResponseEntity<>("제품 삭제", HttpStatus.OK);
+        return ApiResTemplate.successWithNoContent(SuccessCode.PRODUCT_DELETE_SUCCESS);
     }
 }

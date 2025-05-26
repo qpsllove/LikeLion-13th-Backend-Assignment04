@@ -12,8 +12,8 @@ public enum ErrorCode {
     /**
      * 404 NOT FOUND
      */
-    PRODUCT_NOT_FOUND_EXCEPTION(HttpStatus.NOT_FOUND, "해당 사용자가 없습니다. productId = ", "NOT_FOUND_404"),
-    BUY_NOT_FOUND_EXCEPTION(HttpStatus.NOT_FOUND, "해당 게시글이 없습니다. buyId = ", "NOT_FOUND_404"),
+    PRODUCT_NOT_FOUND_EXCEPTION(HttpStatus.NOT_FOUND, "해당 제품이 없습니다. productId = ", "NOT_FOUND_404"),
+    BUY_NOT_FOUND_EXCEPTION(HttpStatus.NOT_FOUND, "해당 구매 목록이 없습니다. buyId = ", "NOT_FOUND_404"),
 
     /**
      * 500 INTERNAL SERVER ERROR
